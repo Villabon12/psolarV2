@@ -19,7 +19,7 @@ class Login extends CI_Controller {
 	public function validar_user(){
 		$email=$this->input->post("email");
 		$pass=$this->input->post("pass");
-      echo "$email $pass";
+
 		$result=$this->model_login->cuenta_user($email, $pass);
 		print_r($result);
 
@@ -43,11 +43,24 @@ class Login extends CI_Controller {
 			echo "conectado";
 
 			if ($dato_usuario->roles_id=='1'){
-				redirect(base_url()."index.php/Admin");
+				if($this->session->userdata('is_logged_in')){
+					redirect(base_url()."index.php/Admin");
+				}else{
+					redirect(base_url()."index.php/inicio");
+				}
+
 			} if ($dato_usuario->roles_id=='2'){
-				redirect(base_url()."index.php/Lider");
+				if($this->session->userdata('is_logged_in')){
+					redirect(base_url()."index.php/Lider");
+				}else{
+					redirect(base_url()."index.php/inicio");
+				}
 			} if ($dato_usuario->roles_id=='3'){
-				redirect(base_url()."index.php/Vendedor");
+				if($this->session->userdata('is_logged_in')){
+					redirect(base_url()."index.php/Vendedor");
+				}else{
+					redirect(base_url()."index.php/inicio");
+				}
 			} if ($dato_usuario->roles_id=='4'){
 				redirect(base_url()."index.php/Login/cerrarSession");
 			}

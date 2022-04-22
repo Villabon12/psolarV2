@@ -13,6 +13,7 @@ class Inicio extends CI_Controller {
 	//Ruta para el inicio
 	public function index()
 	{
+		
 		$this->load->view('view_index');
 	}
 
@@ -28,8 +29,8 @@ class Inicio extends CI_Controller {
             "apellido" => $this->input->post('apellido'),
             "email" => $this->input->post('email'),
             "telefono" => $this->input->post('telefono'),
-
-        );
+			"fecha_creacion" => $this->input->post('date("Y-m-d H:i:s")'),
+		);
 
 		//verificacion de correo
 

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOYOLA</title>
     <link rel="shortcut icon" href="<?=base_url()?>Img/Log.jpg">
-    <link href="<?=base_url()?>css/dashbo.css" rel="stylesheet">
+    <link href="<?=base_url()?>css/das.css" rel="stylesheet">
 
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 

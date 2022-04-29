@@ -193,10 +193,10 @@
 										<div class="modal-footer">
 											
 											<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-											<form id="personas" method="post">
+		
 													
-													<input type="hidden" value="<?= $v->id ?>" name="id_v">
-													<button type="button" data-target="#etapa<?=$v->id?>" data-toggle="modal" class="btn btn-success">Detalles</button>
+													<input type="hidden" value="<?= $v->id ?>" id="id_v">
+													<button id="boton" type="button" data-target="#etapa<?=$v->id?>" data-toggle="modal" class="btn btn-success">Detalles</button>
 													</form>
 											<button type="submit" class="btn btn-primary">Completar Etapa</button>
 										</div>
@@ -210,8 +210,8 @@
 												
 												<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 												
-											
-												<button type="button" data-target="#etapa<?=$v->id?>" data-toggle="modal" class="btn btn-success">Detalles</button>
+												<input type="hidden" value="<?= $v->id ?>" id="id_v">
+												<button id="boton" type="button"  data-target="#etapa<?=$v->id?>" data-toggle="modal" class="btn btn-success">Detalles</button>
 											
 												<button type="submit" class="btn btn-primary">Completar Etapa</button>
 											</div>
@@ -223,8 +223,7 @@
 					<?php } ?>
 					<!-- ENDS MODALS ASCENDER ETAPA -->
 
-
-
+				
 
 
 					<!-- MODALS UPDATE DATE -->
@@ -308,7 +307,7 @@
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 									<h4 class="modal-title" id="myModalLabel">Progreso de <?=$v->nombre?>  <?=$v->apellido?></h4>
 								</div>
-								<div class="modal-body">
+								<div class="modal-body" id="respuesta">
 									Aqui podras observar el avance en las etapas de <?=$v->nombre?>  <?=$v->apellido?> que va en la etapa <?=$v->etapa?> actualmente
 								</div>
 								<!-- ANIMATED PROGRESS BARS -->
@@ -515,30 +514,7 @@
 	</section>
 
 
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('#personas').on('click', function(){
-				var user_id = $('#user_id').val();
-				$.ajax({
-					type: "POST",
-					url: '<?=base_url()?>index.php/Admin/historial',
-					dataType: "json",
-					data:{user_id:user_id},
-					success: function(data)
-					{
-						if(data.status == 'ok'){
-							$("nombre").text(data.result.nombre);
-							$("apellido").text(data.result.apellido);
-							$("disponible").text(data.result.disponible);
-							$("hecho").text(data.result.hecho);
-						}
-						
-					}
-				})
-			})
-		})
 
-	</script>
 
 
 	<!-- js placed at the end of the document so the pages load faster -->
@@ -551,7 +527,7 @@
 	<script src="<?= base_url() ?>assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 	<script src="<?= base_url() ?>assets/js/jquery.sparkline.js"></script>
 	<script src="<?= base_url() ?>assets/js/dattable.js"></script>
-
+	<script src="<?= base_url() ?>js/historial.js"></script>
 
 
 

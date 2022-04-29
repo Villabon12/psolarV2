@@ -18,7 +18,7 @@ class model_admin extends CI_Model {
 	{
 		$sql="SELECT v.id, e.etapa, e.porcentaje, e.id AS n, d.disponible, d.hecho, u.nombre, u.apellido, u.id AS modifica  
 		FROM venta v,disponibilidad d, etapas e, usuario u 
-		WHERE e.id = v.etapas_id AND d.id = v.disponibilidad_id AND u.id = v.usuario_id;";
+		WHERE e.id = v.etapas_id AND d.id = v.disponibilidad_id AND u.id = v.usuario_id ;";
 
 		$query=$this->db->query($sql);
 
@@ -33,7 +33,14 @@ class model_admin extends CI_Model {
 
 		$query=$this->db->query($sql,[$id]);
 
-		return $query->result();
+		    if($query->num_rows > 0){
+				$id_v = $query->fetch_assoc();
+			}else{
+				$data['status'] = 'err';
+			}
+			
+			//returns data as JSON format
+			echo json_encode($id_v);
 	}
 
 	public function traer_usuario(){
@@ -43,6 +50,14 @@ class model_admin extends CI_Model {
 
 		return $query->result();
 	}
+	public function cargar_usuario(){
+		$sql="SELECT u.id, u.nombre, u.apellido, r.id as rol_id, r.rol FROM usuario u, roles r; WHERE u.roles_id = r.id";
+
+		$query=$this->db->query($sql);
+
+		return $query->result();
+	}
+
 	public function traer_cliente(){
 		$sql="SELECT u.id, u.nombre, u.apellido, d.id AS disponibilidad, d.disponible, d.hecho 
 		FROM usuario u, disponibilidad d WHERE roles_id = 4  AND u.disponibilidad_id = d.id;";

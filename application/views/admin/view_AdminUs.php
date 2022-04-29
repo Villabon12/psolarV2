@@ -81,56 +81,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach($usuario as $u){ ?>
                                         <tr>
-                                            <td>Usuario 1</td>
-                                            <td>Admin</td>
+                                            <td><?=$u->nombre?> <?=$u->apellido?></td>
+                                            <td><?=$u->roles_id?></td>
                                             <td>
-                                                <button data-target="#update" data-toggle="modal" class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                <button data-target="#update<?=$u->id?>" data-toggle="modal" class="btn btn-primary btn-xs fa fa-pencil"></button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Usuario 2</td>
-                                            <td>Admin</td>
-
-                                            <td>
-                                                <button data-target="#update" data-toggle="modal" class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Usuario 3</td>
-                                            <td>Lider</td>
-                                            <td>
-                                                <button data-target="#update" data-toggle="modal" class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Usuario 4</td>
-                                            <td>Vendedor</td>
-                                            <td>
-                                                <button data-target="#update" data-toggle="modal" class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Usuario 5</td>
-                                            <td>Vendedor</td>
-                                            <td>
-                                                <button data-target="#update" data-toggle="modal" class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Usuario 6</td>
-                                            <td>Vendedor</td>
-                                            <td>
-                                                <button data-target="#update" data-toggle="modal" class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Usuario 7</td>
-                                            <td>Vendedor</td>
-                                            <td>
-                                                <button data-target="#update" data-toggle="modal" class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                            </td>
-                                        </tr>
+                                        <?php } ?>
+                                       
                                     </tbody>
                                 </table>
 

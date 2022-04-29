@@ -31,9 +31,9 @@ class Admin extends CI_Controller {
 
 	public function historial()
 	{
-		$id = $this->post->input('id');
+		$id = $this->post->input('id_v');
 		$result=$this->model_admin->cargar_venta_historial($id);
-		return json_encode($result);
+		return $result;
 	}
 
 	public function cliente()
@@ -41,7 +41,7 @@ class Admin extends CI_Controller {
 		if($this->session->userdata('is_logged_in')){
 			
 			
-			$result['usuario']=$this->model_admin->traer_usuario();
+			$result['usuario']=$this->model_admin->cargar_usuario();
 			$result['perfil']=$this->model_login->cargar_datos();
 			$result['cliente']=$this->model_admin->traer_cliente();
 

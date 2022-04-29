@@ -21,13 +21,12 @@ class Login extends CI_Controller {
 		$pass=$this->input->post("pass");
 
 		$result=$this->model_login->cuenta_user($email, $pass);
-		print_r($result);
 
 		if ($result->contar==1){
 			$dato_usuario=$this->model_login->trae_user($email,$pass);
 
 			$session_data=array(
-				"ID"=>$dato_usuario->id,
+				"ID"=>$dato_usuario->id_user,
 				"NOMBRE_USUARIO"=>$dato_usuario->nombre,
 				"EMAIL"=>$dato_usuario->email,
 				"PASS"=>$dato_usuario->pass,
@@ -65,7 +64,7 @@ class Login extends CI_Controller {
 				redirect(base_url()."index.php/Login/cerrarSession");
 			}
 		} else {
-		 echo "usuario o contraseña es incorrecta";
+		  echo "clave incorrecta";
 
 		}
 		
@@ -73,7 +72,7 @@ class Login extends CI_Controller {
 	public function cerrarSession(){
 	
 		$session = array(
-			'is_logged_in' => FALSE
+			"is_logged_in" => FALSE
 		);
 			$this->session->set_userdata($session);
 			$this->session->sess_destroy();

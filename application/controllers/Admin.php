@@ -15,10 +15,95 @@ class Admin extends CI_Controller {
 	public function index()
 	{
 		if($this->session->userdata('is_logged_in')){
-		$result['color']=$this->model_admin->traer_colores();
+			
+			
 		$result['usuario']=$this->model_admin->traer_usuario();
-		$result['events']=$this->model_admin->cargar_calendario1();
-		$this->load->view('admin/view_dashboard',$result);
+		$result['venta']=$this->model_admin->cargar_venta();
+		$result['perfil']=$this->model_login->cargar_datos();
+		if($id=$this->input->post('id_v')){
+			$result['venta_historial']=$this->model_admin->cargar_venta_historial($id);
+
+		}
+		$this->load->view('admin/view_Header',$result);
+		$this->load->view('admin/view_Menuadmin',$result);
+		$this->load->view('admin/view_index',$result);
+	}else{
+		redirect(base_url()."index.php/inicio");
+	}
+	}
+
+	public function cliente()
+	{
+		if($this->session->userdata('is_logged_in')){
+			
+			
+			$result['usuario']=$this->model_admin->traer_usuario();
+			$result['perfil']=$this->model_login->cargar_datos();
+			$result['cliente']=$this->model_admin->traer_cliente();
+
+			$this->load->view('admin/view_Header',$result);
+			$this->load->view('admin/view_Menuadmin',$result);
+			$this->load->view('admin/view_PotClien',$result);
+		}else{
+			redirect(base_url()."index.php/inicio");
+		}
+	}
+	public function usuario()
+	{
+		if($this->session->userdata('is_logged_in')){
+			
+			
+			$result['usuario']=$this->model_admin->traer_usuario();
+			$result['perfil']=$this->model_login->cargar_datos();
+
+			$this->load->view('admin/view_Header',$result);
+			$this->load->view('admin/view_Menuadmin',$result);
+			$this->load->view('admin/view_AdminUs',$result);
+		}else{
+			redirect(base_url()."index.php/inicio");
+		}
+	}
+	public function email()
+	{
+		if($this->session->userdata('is_logged_in')){
+			
+			
+			$result['usuario']=$this->model_admin->traer_usuario();
+			$result['perfil']=$this->model_login->cargar_datos();
+
+			$this->load->view('admin/view_Header',$result);
+			$this->load->view('admin/view_Menuadmin',$result);
+			$this->load->view('admin/view_Correo',$result);
+		}else{
+			redirect(base_url()."index.php/inicio");
+		}
+	}
+	public function anuncios()
+	{
+		if($this->session->userdata('is_logged_in')){
+			
+			
+			$result['usuario']=$this->model_admin->traer_usuario();
+			$result['perfil']=$this->model_login->cargar_datos();
+
+			$this->load->view('admin/view_Header',$result);
+			$this->load->view('admin/view_Menuadmin',$result);
+			$this->load->view('admin/view_CambioAn',$result);
+		}else{
+			redirect(base_url()."index.php/inicio");
+		}
+	}
+	public function cambio()
+	{
+		if($this->session->userdata('is_logged_in')){
+			
+			
+			$result['usuario']=$this->model_admin->traer_usuario();
+			$result['perfil']=$this->model_login->cargar_datos();
+
+			$this->load->view('admin/view_Header',$result);
+			$this->load->view('admin/view_Menuadmin',$result);
+			$this->load->view('admin/view_CambioC',$result);
 		}else{
 			redirect(base_url()."index.php/inicio");
 		}
@@ -62,6 +147,35 @@ class Admin extends CI_Controller {
 		$id = $this->input->post('id');
 
 		$idupd= $this->model_admin->delete_calendario($id);
+		redirect(base_url()."index.php/Admin");
+	}
+
+	public function actualizar_venta()
+	{
+		$arre = array(
+			"id"=> $this->input->post('id'),
+			"etapas"=> $this->input->post('etapas'),
+			"modifica"=>$this->input->post('modifica'),
+			"disponibilidad"=>$this->input->post('disponibilidad')
+		);
+	
+	
+		$idaddNew = $this->model_admin->actualiza_venta($arre);
+	
+		redirect(base_url()."index.php/Admin");
+	}
+	public function actualizar_proceso()
+	{
+		$arre = array(
+			"id"=> $this->input->post('id'),
+			"etapas"=> $this->input->post('etapas'),
+			"modifica"=>$this->input->post('modifica'),
+			"disponibilidad"=>$this->input->post('disponibilidad')
+		);
+	
+	
+		$idaddNew = $this->model_admin->actualiza_proceso($arre);
+	
 		redirect(base_url()."index.php/Admin");
 	}
 

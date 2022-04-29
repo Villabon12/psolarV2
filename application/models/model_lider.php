@@ -11,7 +11,65 @@ class model_lider extends CI_Model {
 
 	public function index()
 	{
-		$this->load->view('lider/view_dashboard');
+		$this->load->view('admin/index');
 	}
+
+	public function traer_usuario(){
+		$sql="SELECT * FROM usuario;";
+
+		$query=$this->db->query($sql);
+
+		return $query->result();
+	}
+
+
+	public function traer_colores(){
+		$sql="SELECT * FROM color;";
+
+		$query=$this->db->query($sql);
+
+		return $query->result();
+	}
+
+	public function add($datos){
+		$this->db->insert('calendario',$datos);
+		return $this->db->insert_id();
+
+	}
+
+	public function cargar_calendario1(){
+		$sql="SELECT * FROM calendario;";
+
+		$query=$this->db->query($sql);
+
+		return $query->result();
+
+	}
+
+	public function edit_evento($start, $end, $id){
+	
+		$sql = "UPDATE calendario SET  start = ?
+		, end = ?  WHERE id = ? ;";
+
+		$query=$this->db->query($sql, [$start, $end, $id]);
+
+		return $query->row();
+	
+	}
+
+	public function edit_calendario($id, $datos){
+		$this->db->where('id',$id);
+		$this->db->update('calendario', $datos);
+		return $this->db->update_id();
+	}
+
+	public function delete_calendario($id){
+		$sql = "DELETE FROM calendario WHERE id = $id;";
+
+		$query=$this->db->query($sql);
+
+		return $query->row();
+	}
+
 }
 ?>

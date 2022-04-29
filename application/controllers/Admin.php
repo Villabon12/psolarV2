@@ -20,16 +20,19 @@ class Admin extends CI_Controller {
 		$result['usuario']=$this->model_admin->traer_usuario();
 		$result['venta']=$this->model_admin->cargar_venta();
 		$result['perfil']=$this->model_login->cargar_datos();
-		if($id=$this->input->post('id_v')){
-			$result['venta_historial']=$this->model_admin->cargar_venta_historial($id);
 
-		}
 		$this->load->view('admin/view_Header',$result);
 		$this->load->view('admin/view_Menuadmin',$result);
 		$this->load->view('admin/view_index',$result);
-	}else{
-		redirect(base_url()."index.php/inicio");
+		}else{
+			redirect(base_url()."index.php/inicio");
+		}
 	}
+
+	public function historial()
+	{
+		$id = $this->post->input('id');
+		// $this->model->;
 	}
 
 	public function cliente()
@@ -109,45 +112,25 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function add_event(){
+	public function insertar_venta()
+	{
 		$arre = array(
-			"title" => $this->input->post('title'),
-			"usuario_id" => $this->input->post('usuario_id'),
-			"hijo_id" => $this->input->post('hijo_id'),
-			"color_id" => $this->input->post('color_id'),
-			"start" => $this->input->post('start'),
-			"end" => $this->input->post('end')
-		);
-	
-	
-		$idaddNew = $this->model_admin->add($arre);
-	
-		redirect(base_url()."index.php/Admin");
-
-	}
-
-	public function edit_calendario(){
-		
-		$id = $this->input->post('id');
-		$arre = array(
-			"title"=>$this->input->post('title'),
-			"usuario" => $this->input->post('usuario_id'),
-			"cita" => $this->input->post('cita'),
-			"color" => $this->input->post('color_id'),
-			"start" => $this->input->post('start'),
-			"end" => $this->input->post('end')
+			"id"=>$this->input->post('id'),
+			"disponibilidad"=>$this->input->post('disponibilidad')
 		);
 
-		$idupd= $this->model_admin->edit_calendario($id, $arre);
-		redirect(base_url()."index.php/Admin");
+		$idaddVent = $this->model_admin->insertar_venta($arre);
+		redirect(base_url()."index.php/Admin/");
 	}
+	public function upd_hecho()
+	{
+		$arre = array(
+			"id"=>$this->input->post('id'),
+			"disponibilidad"=>$this->input->post('disponibilidad')
+		);
 
-	public function delete_calendario(){
-		
-		$id = $this->input->post('id');
-
-		$idupd= $this->model_admin->delete_calendario($id);
-		redirect(base_url()."index.php/Admin");
+		$idaddVent = $this->model_admin->upd_hecho($arre);
+		redirect(base_url()."index.php/Admin/cliente");
 	}
 
 	public function actualizar_venta()

@@ -84,9 +84,9 @@
 										<?php foreach($cliente as $cl){?>
 										<tr>
 											<td> <?php echo $cl->nombre ?> <?php echo $cl->apellido ?></td>
-											<td class="hidden-phone"><span class="label label-danger label-mini">En espera</span></td>
+											<td class="hidden-phone"><span class="label label-<?php echo $cl->hecho ?> label-mini"><?php echo $cl->disponible ?></span></td>
 											<td>
-												<button data-target="#myModal" data-toggle="modal" class="btn btn-success btn-xs fa fa-check"></button>
+												<button data-target="#myModal<?php echo $cl->id ?>" data-toggle="modal" class="btn btn-success btn-xs fa fa-check"></button>
 											</td>
 										</tr>
 										<?php } ?>
@@ -161,7 +161,8 @@
 
 
 					<!-- MODALS ACEPTACION CLIENTE -->
-					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<?php foreach($cliente as $cl){ ?>
+					<div class="modal fade" id="myModal<?php echo $cl->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -173,12 +174,21 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Aun no</button>
-									<button type="button" class="btn btn-primary">Si</button>
-									<button type="button" class="btn btn-danger">No quizo</button>
-								</div>
+									<form action="<?=base_url()?>index.php/Admin/insertar_venta" method="POST">
+										<input type="hidden" name="id" value="<?= $cl->id ?>">	
+										<input type="hidden" name="disponibilidad" value="1">	
+										<button type="submit" class="btn btn-primary">Si</button>
+									</form>
+									<form action="<?=base_url()?>index.php/Admin/upd_hecho" method="post">
+										<input type="hidden" name="id" value="<?= $cl->id ?>">	
+										<input type="hidden" name="disponibilidad" value="2">
+										<button type="submit" class="btn btn-danger">No quizo</button>
+									</form>
+									</div>
 							</div>
 						</div>
 					</div>
+					<?php } ?>
 					<!-- ENDS MODALS ACEPTACION CLIENTE -->
 
 

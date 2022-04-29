@@ -64,7 +64,7 @@ class Login extends CI_Controller {
 				redirect(base_url()."index.php/Login/cerrarSession");
 			}
 		} else {
-		  echo "clave incorrecta";
+		  return redirect(base_url()."index.php/Login", header('clave incorrecta'));
 
 		}
 		

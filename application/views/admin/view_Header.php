@@ -44,7 +44,7 @@
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Menu de navegacion"></div>
         </div>
       <!--logo start-->
-      <a href="Admin" class="logo"><b>LOYOLA</b></a>
+      <a href="" class="logo"><b>LOYOLA</b></a>
       <!--logo end-->
       <div class="nav notify-row" id="top_menu">
           <!--  notification start -->

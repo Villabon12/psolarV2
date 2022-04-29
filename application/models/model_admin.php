@@ -44,7 +44,8 @@ class model_admin extends CI_Model {
 		return $query->result();
 	}
 	public function traer_cliente(){
-		$sql="SELECT * FROM usuario WHERE roles_id = 4;";
+		$sql="SELECT u.id, u.nombre, u.apellido, d.id AS disponibilidad, d.disponible, d.hecho 
+		FROM usuario u, disponibilidad d WHERE roles_id = 4  AND u.disponibilidad_id = d.id;";
 
 		$query=$this->db->query($sql);
 
@@ -59,36 +60,20 @@ class model_admin extends CI_Model {
 		return $query->result();
 	}
 
-	public function add($datos){
-		$this->db->insert('calendario',$datos);
+	public function upd_hecho($datos){
+		$datos['disponibilidad'] == 3;
+		$arre = array("disponibilidad_id" => $datos['disponibilidad']);
+		$this->db->where('id', $datos['id']);
+		$this->db->update('usuario',$arre);
+	}
+
+	public function insertar_venta($datos){
+		$this->upd_hecho($datos);
+		$arre = array("disponibilidad_id" => $datos['disponibilidad'],
+					"usuario_id"=>$datos['id']);
+		$this->db->insert('venta',$arre);
 		return $this->db->insert_id();
 
-	}
-
-	public function cargar_calendario1(){
-		$sql="SELECT * FROM calendario;";
-
-		$query=$this->db->query($sql);
-
-		return $query->result();
-
-	}
-
-	public function edit_evento($start, $end, $id){
-	
-		$sql = "UPDATE calendario SET  start = 
-		?, end = ? WHERE id = ? ;";
-
-		$query=$this->db->query($sql, [$start, $end, $id]);
-
-		return $query->row();
-	
-	}
-
-	public function edit_calendario($id, $datos){
-		$this->db->where('id',$id);
-		$this->db->update('calendario', $datos);
-		return $this->db->update_id();
 	}
 
 	public function insertar_historial($datos){

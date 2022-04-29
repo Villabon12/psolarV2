@@ -24,23 +24,26 @@
 	<link href="<?= base_url() ?>assets/css/style-responsive.css" rel="stylesheet">
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/to-do.css">
 
-
 	<!--external css-->
 	<!-- <link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet" /> -->
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/zabuto_calendar.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/js/gritter/css/jquery.gritter.css" />
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/lineicons/style.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/st.css">
-
+	
 	<!-- Custom styles for this template -->
 	<link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet">
 	<link href="<?= base_url() ?>assets/css/style-responsive.css" rel="stylesheet">
-
+	
 	<script src="<?= base_url() ?>assets/js/chart-master/Chart.js"></script>
-
-
+	
+	
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/tabla/dataTables.bootstrap4.min.css">
+	
+	<!-- integrar AJAX -->
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -190,16 +193,16 @@
 										<div class="modal-footer">
 											
 											<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-											<form action="<?=base_url()?>index.php/Admin" method="post">
+											<form id="personas" method="post">
 													
 													<input type="hidden" value="<?= $v->id ?>" name="id_v">
-													<button type="submit" data-target="#etapa<?=$v->id?>" data-toggle="modal" class="btn btn-success">Detalles</button>
+													<button type="button" data-target="#etapa<?=$v->id?>" data-toggle="modal" class="btn btn-success">Detalles</button>
 													</form>
 											<button type="submit" class="btn btn-primary">Completar Etapa</button>
 										</div>
 									</form>
 									<?php ;} else{ ?>
-										<form method="POST" action="<?=base_url()?>index.php/Admin/actualizar_proceso">
+										<form method="POST" action="">
 											<input type="hidden" value="<?= $v->modifica ?>" name="modifica">
 											<input type="hidden" value="<?= $v->n ?>" name="etapas">
 											<input type="hidden" value="3" name="disponibilidad">
@@ -352,7 +355,6 @@
 									<div class="alert alert-success"><b>Terminado</b> La etapa 5 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
 									<div class="alert alert-success"><b>Terminado</b> La etapa 6 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
 									<div class="alert alert-success"><b>Terminado</b> La etapa 7 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-warning"><b>En Progreso</b> Esta estapa esta por aprobar</div>
 								<?php ;}?>
 							</div>
 						</div>
@@ -513,7 +515,18 @@
 	</section>
 
 
+	<!-- <script type="text/javascript">
+		$(document).ready(function()){
+			$('#personas').submit(function(e){
+				e.preventDefault();
+				$ajax({
+					type: "POST",
+					url:""
+				})
+			});
+		}
 
+	</script> -->
 
 
 	<!-- js placed at the end of the document so the pages load faster -->
@@ -548,7 +561,7 @@
 				// (string | mandatory) the text inside the notification
 				text: 'Es un gusto tenerte aqui de nuevo, aqui encontraras tus notificaciones',
 				// (string | optional) the image to display on the left
-				image: '../assets/img/log.jpg',
+				image: '<?=base_url()?>assets/img/log.jpg',
 				// (bool | optional) if you want it to fade out on its own or just sit there
 				sticky: true,
 				// (int | optional) the time you want it to be alive for before fading out

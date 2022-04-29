@@ -202,7 +202,7 @@
 										</div>
 									</form>
 									<?php ;} else{ ?>
-										<form method="POST" action="">
+										<form method="POST" id="personas">
 											<input type="hidden" value="<?= $v->modifica ?>" name="modifica">
 											<input type="hidden" value="<?= $v->n ?>" name="etapas">
 											<input type="hidden" value="3" name="disponibilidad">
@@ -515,18 +515,30 @@
 	</section>
 
 
-	<!-- <script type="text/javascript">
-		$(document).ready(function()){
-			$('#personas').submit(function(e){
-				e.preventDefault();
-				$ajax({
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#personas').on('click', function(){
+				var user_id = $('#user_id').val();
+				$.ajax({
 					type: "POST",
-					url:""
+					url: '<?=base_url()?>index.php/Admin/historial',
+					dataType: "json",
+					data:{user_id:user_id},
+					success: function(data)
+					{
+						if(data.status == 'ok'){
+							$("nombre").text(data.result.nombre);
+							$("apellido").text(data.result.apellido);
+							$("disponible").text(data.result.disponible);
+							$("hecho").text(data.result.hecho);
+						}
+						
+					}
 				})
-			});
-		}
+			})
+		})
 
-	</script> -->
+	</script>
 
 
 	<!-- js placed at the end of the document so the pages load faster -->

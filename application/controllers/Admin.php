@@ -32,7 +32,8 @@ class Admin extends CI_Controller {
 	public function historial()
 	{
 		$id = $this->post->input('id');
-		// $this->model->;
+		$result=$this->model_admin->cargar_venta_historial($id);
+		return json_encode($result);
 	}
 
 	public function cliente()

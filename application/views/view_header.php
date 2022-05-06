@@ -79,14 +79,13 @@
                   </div>
                 </div>
                 <div class="ant-modal-body">
-                  <form class="ant-form ant-form-horizontal Czk1txKg">
+                  <form class="ant-form ant-form-horizontal Czk1txKg" method="POST" action="<?=base_url()?>index.php/Inicio/insertar_estimado">
                     <span class="ULaXP8pY">Escribir Codigo PAIS</span>
                     <div class="ant-row ant-form-item">
                       <div class="ant-col ant-form-item-control">
                         <div class="ant-form-item-control-input">
                           <div class="ant-form-item-control-input-content">
-                          <select class="form-select form-select-lg " >
-                            <option selected>Seleccione...</option>
+                          <select class="form-select form-select-lg " name="pais">
                             <?php foreach($pais as $p){ ?>
                             <option value="<?php echo $p->id ?>"><?php echo $p->pais ?></option>
                             <?php } ?>
@@ -139,7 +138,7 @@
                 <div class="ant-modal-body">
                   <div class="d1EZtXp9">
                     <div class="WsMtvfgp"><span class="_rQ8jXtd">1</span></div>
-                    <div class="ant-row pzH0oHdB"><span class="rWZYvJke">¿Cuál es tu build electrico? (KW)</span></div>
+                    <div class="ant-row pzH0oHdB"><span class="rWZYvJke">Subir archivos</span></div>
                       <div class="quantity">
                         <input type="number" step="1" placeholder="0" name="v_luz">
                       </div></br>
@@ -148,7 +147,7 @@
                     </div>
                     <div class="d1EZtXp9">
                       <div class="WsMtvfgp"><span class="_rQ8jXtd">2</span></div>
-                      <div class="ant-row pzH0oHdB"><span class="rWZYvJke">Cuentanos mas sobre ti</span></div>
+                      <div class="ant-row pzH0oHdB"><span class="rWZYvJke">Informacion Requerida</span></div>
                     </div>
                     
                   </div>
@@ -223,7 +222,7 @@
                             <div class="ant-col ant-form-item-control">
                               <div class="ant-form-item-control-input">
                                 <div class="ant-form-item-control-input-content"><input
-                                class="ant-input ant-input-lg X6bvyjWl" name="estado_id" id="quote_state" type="text"
+                                class="ant-input ant-input-lg X6bvyjWl" name="" id="quote_state" type="text"
                                 value=""></div>
                               </div>
                             </div>
@@ -294,7 +293,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="E82d6aoE"><button type="button"
+                    <div class="E82d6aoE"><button type="submit"
                     class="ant-btn ant-btn-default Lj9QbRop"><span>Enviar</span>
                   </div>
                 </form>

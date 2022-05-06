@@ -42,11 +42,15 @@ class Inicio extends CI_Controller {
 	public function insertar_estimado(){
             
         $arre = array(
+            "v_luz" => $this->input->post('nombre'),
             "nombre" => $this->input->post('nombre'),
             "apellido" => $this->input->post('apellido'),
+            "direccion" => $this->input->post('direccion'),
+            "ciudad" => $this->input->post('ciudad'),
+            "estado_id" => $this->input->post('estado_id'),
             "email" => $this->input->post('email'),
             "telefono" => $this->input->post('telefono'),
-			"fecha_creacion" => $this->input->post('date("Y-m-d H:i:s")'),
+
 		);
 
 		//verificacion de correo

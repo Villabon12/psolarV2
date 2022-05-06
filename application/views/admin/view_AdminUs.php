@@ -84,7 +84,7 @@
                                         <?php foreach($usuario as $u){ ?>
                                         <tr>
                                             <td><?=$u->nombre?> <?=$u->apellido?></td>
-                                            <td><?=$u->roles_id?></td>
+                                            <td><?=$u->rol?></td>
                                             <td>
                                                 <button data-target="#update<?=$u->id?>" data-toggle="modal" class="btn btn-primary btn-xs fa fa-pencil"></button>
                                             </td>
@@ -159,9 +159,9 @@
 
 
 
-
+                    <?php foreach($usuario as $u){ ?>
                     <!-- MODALS ADMIN USUARIOS -->
-                    <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="update<?=$u->id?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -169,21 +169,22 @@
                                     <h4 class="modal-title" id="myModalLabel">Administracion de usuario</h4>
                                 </div>
                                 <div class="modal-body">
-                                    ¿Que quieres hacer con el usuario ""?
+                                    ¿Que quieres hacer con el usuario <?=$u->nombre?> <?=$u->apellido?>?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" data-target="#etapa" data-toggle="modal" class="btn btn-primary">Cambiar de cargo</button>
-                                    <button type="button" data-target="#modalDes" data-toggle="modal" class="btn btn-danger">Desvincular</button>
+                                    <button type="button" data-target="#etapa<?=$u->id?>" data-toggle="modal" class="btn btn-primary">Cambiar de cargo</button>
+                                    <button type="button" data-target="#modalDes<?=$u->id?>" data-toggle="modal" class="btn btn-danger">Desvincular</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- ENDS MODALS ADMIN USUARIOS -->
+                    <?php } ?>
 
 
-
+                    <?php foreach($usuario as $u){ ?>
                     <!-- MODALS ADMIN USUARIOS -->
-                    <div class="modal fade" id="etapa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="etapa<?=$u->id?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -191,31 +192,36 @@
                                     <h4 class="modal-title" id="myModalLabel">Administracion de usuario</h4>
                                 </div>
                                 <div class="modal-body">
-                                    ¿A que rango deseas actualizar al usuario ""?
+                                    ¿A que rango deseas actualizar al usuario <?=$u->nombre?> <?=$u->apellido?>?
                                 </div>
+                                <form action="<?=base_url()?>index.php/Admin/upd_rol" method="post">
                                 <div class="form-group has-success">
                                     <div class="col-lg-10">
-                                        <select class="form-control">
-                                            <option>Admin</option>
-                                            <option>Lider</option>
-                                            <option>Vendedor</option>
+                                        <input type="hidden" name="id" value="<?=$u->id?>">
+                                        <select class="form-control" name="roles_id">
+                                            <option value="1">Admin</option>
+                                            <option value="2">Lider</option>
+                                            <option value="3">Vendedor</option>
                                         </select>
                                     </div>
                                 </div>
+
                                 </br></br></br>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger">Cancelar</button>
-                                    <button type="button" class="btn btn-primary">Cambiar de cargo</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Cambiar de cargo</button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                     <!-- ENDS MODALS ADMIN USUARIOS -->
+                    <?php } ?>
 
 
-
+                    <?php foreach($usuario as $u){ ?>
                     <!--Modal: modalDesvinculacion-->
-                    <div class="modal fade" id="modalDes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modalDes<?=$u->id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-notify modal-info" role="document">
                             <!--Content-->
                             <div class="modal-content text-center">
@@ -230,21 +236,27 @@
                                     <i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
                                     </br></br>
 
-                                    <p>¿Estas Segur@ que quieres desvincular al usuario ""?</p>
+                                    <p>¿Estas Segur@ que quieres desvincular al usuario <?=$u->nombre?> <?=$u->apellido?>?</p>
 
                                 </div>
 
                                 <!--Footer-->
+                                <form action="<?=base_url()?>index.php/Admin/upd_activo" method="post">
+                                    <input type="hidden" name="id" value="<?=$u->id?>">
+                                    <input type="hidden" name="activo" value="0">
                                 <div class="modal-footer flex-center">
+
                                     <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">no</a>
-                                    <a href="" class="btn btn-danger">si</a>
+                                    <button type="submit" class="btn btn-danger">si</button>
                                 </div>
+                                </form>
                             </div>
                             <!--/.Content-->
                         </div>
                     </div>
 
-<!-- ENDS MODALS DESVINCULACION -->
+                    <!-- ENDS MODALS DESVINCULACION -->
+                    <?php } ?>
 
 
 

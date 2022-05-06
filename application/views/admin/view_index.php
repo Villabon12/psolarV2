@@ -93,7 +93,7 @@
 											<td><?= $v->etapa ?></td>
 											<td>
 												<button data-target="#myModal<?=$v->id?>" data-toggle="modal" class="btn btn-success btn-xs fa fa-check"></button>
-												<button data-target="#update" data-toggle="modal" class="btn btn-primary btn-xs fa fa-pencil"></button>
+												<button data-target="#update<?=$v->id?>" data-toggle="modal" class="btn btn-primary btn-xs fa fa-pencil"></button>
 											</td>
 										</tr>
 										<?php }  ?>
@@ -223,83 +223,8 @@
 					<?php } ?>
 					<!-- ENDS MODALS ASCENDER ETAPA -->
 
-				
-
-
-					<!-- MODALS UPDATE DATE -->
-					<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									<h4 class="modal-title" id="myModalLabel">Actualiza los datos de ""</h4>
-								</div>
-								<div class="form-panel">
-									<form class="form-horizontal tasi-form" method="get">
-										<div class="form-group has-success">
-											<label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Nombre</label>
-											<div class="col-lg-10">
-												<input type="text" class="form-control" id="name">
-											</div>
-										</div>
-										<div class="form-group has-success">
-											<label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Direccion</label>
-											<div class="col-lg-10">
-												<input type="text" class="form-control" id="dir">
-											</div>
-										</div>
-										<div class="form-group has-success">
-											<label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Correo</label>
-											<div class="col-lg-10">
-												<input type="text" class="form-control" id="email">
-											</div>
-										</div>
-										<div class="form-group has-success">
-											<label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Telefono</label>
-											<div class="col-lg-10">
-												<input type="text" class="form-control" id="phone">
-											</div>
-										</div>
-
-										<div class="form-group has-success">
-											<label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Refenciado Por:</label>
-											<div class="col-lg-10">
-												<input type="text" class="form-control" id="ref">
-											</div>
-										</div>
-										<div class="form-group has-success">
-											<label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Estado del proceso:</label>
-											<div class="col-lg-10">
-												<select class="form-control">
-													<option>En Proceso</option>
-													<option>Terminado</option>
-													<option>Cancelado</option>
-												</select>
-											</div>
-										</div>
-
-
-
-										<div class="modal-footer">
-											<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-											<button type="button" class="btn btn-primary">Guardar cambios</button>
-										</div>
-
-
-
-
-
-									</form>
-								</div><!-- /form-panel -->
-							</div>
-						</div>
-					</div>
-					<!-- ENDS MODALS UPDATE DATE-->
-
-
-
-					<!-- MODALS ASCENDER ETAPA -->
-					<?php foreach($venta as $v){ ?>
+				<!-- MODALS ASCENDER ETAPA -->
+				<?php foreach($venta as $v){ ?>
 					<div class="modal fade" id="etapa<?=$v->id?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
@@ -358,11 +283,87 @@
 							</div>
 						</div>
 					</div>
-					<?php } ?>
-					<!-- ENDS MODALS ASCENDER ETAPA -->
+				<?php } ?>
+				<!-- ENDS MODALS ASCENDER ETAPA -->
+
+				
+
+
+					<!-- MODALS UPDATE DATE -->
+				<?php foreach($venta as $v){?>
+					<div class="modal fade" id="update<?=$v->id?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">Actualiza los datos de <?=$v->nombre?> <?=$v->apellido?></h4>
+								</div>
+								<div class="form-panel">
+									<form class="form-horizontal tasi-form" method="POST" method="<?php base_url() ?>index.php/Admin/actualizarUsuario">
+										<div class="form-group has-success">
+											<label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Nombre</label>
+											<div class="col-lg-10">
+												<input name="name" type="text" class="form-control" id="name" value="<?=$v->nombre?>">
+											</div>
+										</div>
+										<div class="form-group has-success">
+											<label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Apellido</label>
+											<div class="col-lg-10">
+												<input name="apellido" type="text" class="form-control" id="apellido" value="<?=$v->apellido?>">
+											</div>
+										</div>
+										<div class="form-group has-success">
+											<label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Direccion</label>
+											<div class="col-lg-10">
+												<input name="direccion" type="text" class="form-control" id="dir" value="<?=$v->direccion?>">
+											</div>
+										</div>
+										<div class="form-group has-success">
+											<label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Correo</label>
+											<div class="col-lg-10">
+												<input name="email" type="text" class="form-control" id="email" value="<?=$v->email?>">
+											</div>
+										</div>
+										<div class="form-group has-success">
+											<label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Telefono</label>
+											<div class="col-lg-10">
+												<input name="telefono" type="text" class="form-control" id="phone" value="<?=$v->telefono?>">
+											</div>
+										</div>
+
+										<div class="form-group has-success">
+											<label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Refenciado Por:</label>
+											<div class="col-lg-10">
+												<input name="papa" type="text" class="form-control" id="ref" value="<?=$v->papa?>">
+											</div>
+										</div>
+										<div class="form-group has-success">
+											<label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Estado del proceso:</label>
+											<div class="col-lg-10">
+												<select class="form-control" name="disponibilidad_id">
+													<option value="">--Seleccionar--</option>
+													<option value="4">En Espera</option>
+													<option value="1">En Proceso</option>
+													<option value="3">Terminado</option>
+													<option value="2">Cancelado</option>
+												</select>
+											</div>
+										</div>
 
 
 
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+											<button type="submit" class="btn btn-primary">Guardar cambios</button>
+										</div>
+
+									</form>
+								</div><!-- /form-panel -->
+							</div>
+						</div>
+					</div>
+				<?php } ?>
+					<!-- ENDS MODALS UPDATE DATE-->
 				</div><!-- /col-lg-9 END SECTION MIDDLE -->
 
 
@@ -444,7 +445,7 @@
 					<!-- First Member -->
 					<div class="desc">
 						<div class="thumb">
-							<img class="img-circle" src="<?= base_url() ?>assets/img/ui-divya.jpg" width="35px" height="35px" align="">
+							<img class="img-circle" src="<?= base_url() ?>assets/img/ui-divya.jpg" width="35px" height="35px">
 						</div>
 						<div class="details">
 							<p><a href="#">DIVYA MANIAN</a><br />
@@ -454,7 +455,7 @@
 					<!-- Second Member -->
 					<div class="desc">
 						<div class="thumb">
-							<img class="img-circle" src="<?= base_url() ?>assets/img/ui-sherman.jpg" width="35px" height="35px" align="">
+							<img class="img-circle" src="<?= base_url() ?>assets/img/ui-sherman.jpg" width="35px" height="35px">
 						</div>
 						<div class="details">
 							<p><a href="#">DJ SHERMAN</a><br />
@@ -464,7 +465,7 @@
 					<!-- Third Member -->
 					<div class="desc">
 						<div class="thumb">
-							<img class="img-circle" src="<?= base_url() ?>assets/img/ui-danro.jpg" width="35px" height="35px" align="">
+							<img class="img-circle" src="<?= base_url() ?>assets/img/ui-danro.jpg" width="35px" height="35px">
 						</div>
 						<div class="details">
 							<p><a href="#">DAN ROGERS</a><br />
@@ -474,7 +475,7 @@
 					<!-- Fourth Member -->
 					<div class="desc">
 						<div class="thumb">
-							<img class="img-circle" src="<?= base_url() ?>assets/img/ui-zac.jpg" width="35px" height="35px" align="">
+							<img class="img-circle" src="<?= base_url() ?>assets/img/ui-zac.jpg" width="35px" height="35px">
 						</div>
 						<div class="details">
 							<p><a href="#">Zac Sniders</a><br />
@@ -484,7 +485,7 @@
 					<!-- Fifth Member -->
 					<div class="desc">
 						<div class="thumb">
-							<img class="img-circle" src="<?= base_url() ?>assets/img/ui-sam.jpg" width="35px" height="35px" align="">
+							<img class="img-circle" src="<?= base_url() ?>assets/img/ui-sam.jpg" width="35px" height="35px">
 						</div>
 						<div class="details">
 							<p><a href="#">Marcel Newman</a><br />

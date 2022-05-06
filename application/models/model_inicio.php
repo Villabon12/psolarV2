@@ -37,6 +37,11 @@ class model_inicio extends CI_Model {
 		return $query->result();
 	}
 
+	public function insertar_estimado($datos){
+        $this->db->insert('usuario',$datos);
+        return $this->db->insert_id();
+    }
+
 	
 }
 ?>

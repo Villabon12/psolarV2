@@ -175,11 +175,40 @@
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Aun no</button>
 									<form action="<?=base_url()?>index.php/Admin/insertar_venta" method="POST">
+									<!-- <input type="hidden" name="nombre" value="<?= $cl->nombre ?>">
+										<input type="hidden" name="apellido" value="<?= $cl->apellido ?>">
+										<input type="hidden" name="pass" value="<?= $cl->pass ?>">
+										<input type="hidden" name="direccion" value="<?= $cl->direccion ?>">
+										<input type="hidden" name="email" value="<?= $cl->email ?>">
+										<input type="hidden" name="telefono" value="<?= $cl->telefono ?>">
+										<input type="hidden" name="papa" value="<?= $cl->papa ?>">
+										<input type="hidden" name="estado_id" value="<?= $cl->estado_id ?>">
+										<input type="hidden" name="roles_id" value="<?= $cl->roles_id ?>">
+										<input type="hidden" name="activo" value="<?= $cl->activo ?>">
+										<input type="hidden" name="v_luz" value="<?= $cl->v_luz ?>">
+										<input type="hidden" name="ciudad" value="<?= $cl->ciudad ?>">
+										<input type="hidden" name="modifica_usuario" value="<?= $perfil->id ?>"> -->
+									
 										<input type="hidden" name="id" value="<?= $cl->id ?>">	
 										<input type="hidden" name="disponibilidad" value="1">	
 										<button type="submit" class="btn btn-primary">Si</button>
 									</form>
 									<form action="<?=base_url()?>index.php/Admin/upd_hecho" method="post">
+									
+										<!-- <input type="hidden" name="nombre" value="<?= $cl->nombre ?>">
+										<input type="hidden" name="apellido" value="<?= $cl->apellido ?>">
+										<input type="hidden" name="pass" value="<?= $cl->pass ?>">
+										<input type="hidden" name="direccion" value="<?= $cl->direccion ?>">
+										<input type="hidden" name="email" value="<?= $cl->email ?>">
+										<input type="hidden" name="telefono" value="<?= $cl->telefono ?>">
+										<input type="hidden" name="papa" value="<?= $cl->papa ?>">
+										<input type="hidden" name="estado_id" value="<?= $cl->estado_id ?>">
+										<input type="hidden" name="roles_id" value="<?= $cl->roles_id ?>">
+										<input type="hidden" name="activo" value="<?= $cl->activo ?>">
+										<input type="hidden" name="v_luz" value="<?= $cl->v_luz ?>">
+										<input type="hidden" name="ciudad" value="<?= $cl->ciudad ?>">
+										<input type="hidden" name="modifica_usuario" value="<?= $perfil->id ?>"> -->
+
 										<input type="hidden" name="id" value="<?= $cl->id ?>">	
 										<input type="hidden" name="disponibilidad" value="2">
 										<button type="submit" class="btn btn-danger">No quizo</button>

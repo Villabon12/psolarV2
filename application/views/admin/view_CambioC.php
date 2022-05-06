@@ -13,6 +13,8 @@
 	<link rel="shortcut icon" href="<?=base_url()?>assets/img/Log.jpg">
 
 	<script src="https://kit.fontawesome.com/b3198e60f8.js" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="<?=base_url()?>assets/css/compiled-4.20.0.min.css">
 	<!-- Bootstrap core CSS -->
 	<link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
 
@@ -40,7 +42,7 @@
 
 
 	<link rel="stylesheet" href="<?=base_url()?>assets/css/tabla/dataTables.bootstrap4.min.css">
-	<link rel="stylesheet" href="<?=base_url()?>assets/css/compiled-4.20.0.min.css">
+
 
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -69,24 +71,25 @@
 					<div class="row mt ">
 						<div class="col-md-12">
 							<div class="content-panel position-abs">
-
 								<div class="row mt">
 									<div class="col-lg-12">
 										<div class="form-panel">
 											<h4 class="mb"><i class="fa fa-angle-right"></i> Cambiar Contraseña</h4>
-											<form class="form-inline" role="form">
+											<form class="form-inline" method="POST" action="<?=base_url()?>index.php/Admin/upd_contra">
+												
 												<div class="col-sm-10">
 													<label class="sr-only" for="exampleInputEmail2">Antigua Contraseña</label>
-													<input type="Text" class="form-control" id="Acon" placeholder="Antigua Contraseña">
+													<input type="password" class="form-control" value="<?= $perfil->pass ?>" id="Acon" placeholder="Antigua Contraseña" require>
+													<input type="hidden" name="id" value="<?=$perfil->id?>">
 												</div>
 												<div class="col-sm-10">
 													<div class="form-group">
 														<label class="sr-only" for="exampleInputEmail2">Nueva Contraseña</label>
-														<input type="password" class="form-control" id="Ncon" placeholder="Nueva Contraseña">
+														<input type="password" name="nueva" class="form-control" id="Ncon" placeholder="Nueva Contraseña" require>
 													</div>
 													<div class="form-group">
 														<label class="sr-only" for="exampleInputPassword2">Repetir Contraseña</label>
-														<input type="password" class="form-control" id="Rcon" placeholder="Repetir contraseña">
+														<input type="password" name="repetir" class="form-control" id="Rcon" placeholder="Repetir contraseña" require>
 													</div>
 												</div>
 
@@ -121,13 +124,15 @@
 
 																<!--Footer-->
 																<div class="modal-footer flex-center">
-																	<a href="" class="btn btn-info">si</a>
+																	<button type="submit" class="btn btn-info">si</button>
 																	<a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">no</a>
 																</div>
 															</div>
 															<!--/.Content-->
 														</div>
 													</div>
+
+											</form>
 
 
 
@@ -162,7 +167,7 @@
 
 													<script type="text/javascript" src="<?=base_url()?>assets/js/compiled.min.js"></script>
 												</div>
-											</form>
+											
 										</div><!-- /form-panel -->
 									</div><!-- /col-lg-12 -->
 								</div><!-- /row -->

@@ -12,11 +12,12 @@ Premium: http://www.gridgum.com
 /* BASIC THEME CONFIGURATION */
 body {
     color: #797979;
-	background: #f2f2f2;    
+	background: #2b2f3e !important;   
     font-family: 'Ruda', sans-serif;
     padding: 0px !important;
     margin: 0px !important;
     font-size:13px;
+    transition: 0.4s;
 }
 
 ul li {
@@ -223,12 +224,14 @@ ul.top-menu > li > .logout {
 	margin-right: 15px;
 	background: #68dff0;
 	margin-top: 15px;
+    float: right;
 }
 
 
 /*sidebar navigation*/
 
 #sidebar {
+    transition: 0.4s;
     width: 210px;
     height: 100%;
     position: fixed;
@@ -245,6 +248,7 @@ ul.top-menu > li > .logout {
 }
 
 #sidebar .sub-menu > .sub li  {
+    transition: 0.4s;
     padding-left: 32px;
 }
 
@@ -413,7 +417,7 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: #ffd777;
+    background: #f9bf06;
     border-bottom: 1px solid #c9aa5f;
 }
 
@@ -425,6 +429,12 @@ ul.sidebar-menu li a.active i {
     padding-bottom: 15px;
     padding-top: 0px;
     width: 100%;
+}
+
+
+
+.abl{
+width: 100% !important;
 }
 
 a.logo {

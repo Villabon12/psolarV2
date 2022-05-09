@@ -35,15 +35,7 @@ class model_admin extends CI_Model {
 		WHERE vh.venta_id = ?  AND  u.id=vh.modifica_usuario AND d.id=vh.disponibilidad_id AND v.id=vh.venta_id;";
 
 		$query=$this->db->query($sql,[$id]);
-
-		    if($query->num_rows > 0){
-				$id_v = $query->fetch_assoc();
-			}else{
-				$data['status'] = 'err';
-			}
-			
-			//returns data as JSON format
-			echo json_encode($id_v);
+		return $query->result();
 	}
 
 	public function traer_usuario(){
@@ -65,14 +57,6 @@ class model_admin extends CI_Model {
 	public function traer_cliente(){
 		$sql="SELECT u.*, d.id AS disponibilidad, d.disponible, d.hecho 
 		FROM usuario u, disponibilidad d WHERE roles_id = 4  AND u.disponibilidad_id = d.id;";
-
-		$query=$this->db->query($sql);
-
-		return $query->result();
-	}
-
-	public function traer_colores(){
-		$sql="SELECT * FROM color;";
 
 		$query=$this->db->query($sql);
 
@@ -141,8 +125,8 @@ class model_admin extends CI_Model {
 			"telefono"=> $datos["telefono"],
 			"papa"=> $datos["papa"],
 		);
-		$this->db->where('id', $datos['id']);
-		$this->db->update('usuario', $arre['id']);
+		$this->db->where('id', $datos['id_u']);
+		$this->db->update('usuario', $arre);
 		
 	}
 
@@ -155,12 +139,12 @@ class model_admin extends CI_Model {
 		$this->db->update('usuario', $arre);
 	}
 
-	public function upd_estado($datos)
+	public function updDisponibilidad($datos)
 	{
 		$arre = array(
 			"disponibilidad_id" => $datos['disponibilidad_id']
 		);
-		$this->db->where('id', $datos['id']);
+		$this->db->where('id', $datos['id_v']);
 		$this->db->update('venta', $arre);
 	}
 
@@ -212,23 +196,6 @@ class model_admin extends CI_Model {
 
 	// CALENDARIO MODEL
 
-	public function updEvento($param)
-	{
-		$campos = array(
-			'start' => $param['start'],
-			'end' => $param['end']
-		);
-
-		$this->db->where('id',$param['id']);
-		$this->db->update('calendario', $campos);
-
-		if($this->db->affected_rows() == 1){
-			return 1;
-		}else{
-			return 0;
-		}
-		
-	}
 
 	function fetch_all_event(){
 		$this->db->order_by('id');

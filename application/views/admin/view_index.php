@@ -195,8 +195,8 @@
 											<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 		
 													
-													<input type="hidden" value="<?= $v->id ?>" id="id_v">
-													<button id="boton" type="button" data-target="#etapa<?=$v->id?>" data-toggle="modal" class="btn btn-success">Detalles</button>
+												
+													<button type="button" data-target="#etapa<?=$v->id?>" data-toggle="modal" class="btn btn-success">Detalles</button>
 													</form>
 											<button type="submit" class="btn btn-primary">Completar Etapa</button>
 										</div>
@@ -210,8 +210,8 @@
 												
 												<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 												
-												<input type="hidden" value="<?= $v->id ?>" id="id_v">
-												<button id="boton" type="button"  data-target="#etapa<?=$v->id?>" data-toggle="modal" class="btn btn-success">Detalles</button>
+											
+												<button type="button" value="<?=$v->id?>" data-target="#etapa<?=$v->id?>" data-toggle="modal" class="btn btn-success">Detalles</button>
 											
 												<button type="submit" class="btn btn-primary">Completar Etapa</button>
 											</div>
@@ -245,40 +245,40 @@
 									</div>
 								</div><!-- /showback -->
 								<?php if(1 == $v->n){ ?>
-									<div class="alert alert-warning"><b>En Progreso</b> La etapa 1 <?= $v->disponible ?> </div>
+									<div class="alert alert-warning"><b>En Progreso</b> El proceso de aprobación <?= $v->disponible ?> </div>
 								<?php ;} if(2 == $v->n){ ?>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 1 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-warning"><b>En Progreso</b> La etapa 2 <?= $v->disponible ?></div>
+									<div class="alert alert-success"><b>Terminado</b> El proceso de aprobación ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-warning"><b>En Progreso</b> La inspeccion de la propiedad <?= $v->disponible ?></div>
 								<?php ;} if(3 == $v->n){ ?>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 1 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 2 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-warning"><b>En Progreso</b> La etapa 3 <?= $v->disponible ?></div>
+									<div class="alert alert-success"><b>Terminado</b> El proceso de aprobación ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> La inspeccion de la propiedad ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-warning"><b>En Progreso</b> El permiso con la ciudad <?= $v->disponible ?></div>
 								<?php ;} if(4 == $v->n){ ?>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 1 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 2 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 3 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-warning"><b>En Progreso</b> La etapa 4 <?= $v->disponible ?></div>
+									<div class="alert alert-success"><b>Terminado</b> El proceso de aprobación ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> La inspeccion de la propiedad ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> El permiso con la ciudad ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-warning"><b>En Progreso</b> La instalacion Solar <?= $v->disponible ?></div>
 								<?php ;} if(5 == $v->n){ ?>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 1 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 2 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 3 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 4 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-warning"><b>En Progreso</b> La etapa 5 <?= $v->disponible ?></div>
+									<div class="alert alert-success"><b>Terminado</b> El proceso de aprobación ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> La inspeccion de la propiedad ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> El permiso con la ciudad ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> La instalacion Solar ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-warning"><b>En Progreso</b> La firma el acuerdo con oncor <?= $v->disponible ?></div>
 								<?php ;} if(6 == $v->n){ ?>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 1 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 2 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 3 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 4 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 5 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-warning"><b>En Progreso</b> La etapa 6 <?= $v->disponible ?></div>
+									<div class="alert alert-success"><b>Terminado</b> El proceso de aprobación ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> La inspeccion de la propiedad ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> El permiso con la ciudad ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> La instalacion Solar ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> La firma el acuerdo con oncor ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-warning"><b>En Progreso</b> El cambio de proveedor de energia renovable <?= $v->disponible ?></div>
 								<?php ;} if(7 == $v->n){ ?>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 1 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 2 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 3 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 4 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 5 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 6 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
-									<div class="alert alert-success"><b>Terminado</b> La etapa 7 terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> El proceso de aprobación ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> La inspeccion de la propiedad ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> El permiso con la ciudad ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> La instalacion Solar ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> La firma el acuerdo con oncor ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> El cambio de proveedor de energia renovable ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
+									<div class="alert alert-success"><b>Terminado</b> Activacion del sistema ha terminado fue aprobada por <?= $v->nombre ?> <?= $v->apellido ?> </div>
 								<?php ;}?>
 							</div>
 						</div>
@@ -286,7 +286,23 @@
 				<?php } ?>
 				<!-- ENDS MODALS ASCENDER ETAPA -->
 
-				
+				<script>
+					
+					$("#buscar").on("submit",function(event){
+						event.preventDefault();				
+							$.ajax({
+								url: $(this).prop("<?php base_url()?>index.php/Admin/cargar_historial"),
+								type: $(this).prop("POST"),
+								data:$(this).serialize(),
+								dataType: "html"							
+							}).done(function(response){
+								$("listado").html(response);
+							}).fail(function(jqXHR, textStatus){
+								console.log(textStatus);
+							});
+					});
+
+				</script>
 
 
 					<!-- MODALS UPDATE DATE -->
@@ -299,10 +315,12 @@
 									<h4 class="modal-title" id="myModalLabel">Actualiza los datos de <?=$v->nombre?> <?=$v->apellido?></h4>
 								</div>
 								<div class="form-panel">
-									<form class="form-horizontal tasi-form" method="POST" method="<?php base_url() ?>index.php/Admin/actualizarUsuario">
+									<form class="form-horizontal tasi-form" method="POST" action="<?php base_url() ?>Admin/actualizarUsuario">
 										<div class="form-group has-success">
 											<label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Nombre</label>
 											<div class="col-lg-10">
+												<input type="hidden" name="id_v" value="<?=$v->id?>">
+												<input type="hidden" name="id_u" value="<?=$v->id?>">
 												<input name="name" type="text" class="form-control" id="name" value="<?=$v->nombre?>">
 											</div>
 										</div>
@@ -528,7 +546,7 @@
 	<script src="<?= base_url() ?>assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 	<script src="<?= base_url() ?>assets/js/jquery.sparkline.js"></script>
 	<script src="<?= base_url() ?>assets/js/dattable.js"></script>
-	<script src="<?= base_url() ?>js/historial.js"></script>
+
 
 
 

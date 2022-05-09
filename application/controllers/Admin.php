@@ -212,6 +212,17 @@ class Admin extends CI_Controller {
 		redirect(base_url()."index.php/Admin");
 	}
 
+	function cargar_historial()
+	{
+		if($this->input->is_ajax_request()){
+			$id = $this->input->post("id");
+			$datos = $this->model_admin->cargar_venta_historial($id);
+			echo json_encode($datos);
+		}else{
+			show_404();
+		}
+	}
+
 	function load()
 	{
 	 $event_data = $this->model_admin->fetch_all_event();
@@ -304,29 +315,27 @@ class Admin extends CI_Controller {
 	public function actualizarUsuario()
 	{
 		$datos = array(
-			"id"=>$this->input->post('id'),
+			"id_v"=>$this->input->post('id_v'),
+			"id_u"=>$this->input->post('id_v'),
 			"nombre"=>$this->input->post('nombre'),
 			"apellido"=>$this->input->post('apellido'),
 			"direccion"=>$this->input->post('direccion'),
 			"email"=>$this->input->post('email'),
 			"telefono"=>$this->input->post('telefono'),
 			"papa"=>$this->input->post('papa'),
-			
-		);
-
-		$disponibilidad = array(
 			"disponibilidad_id"=>$this->input->post('disponibilidad_id')
+			
 		);
 		
 		if($datos['disponibilidad_id'] != ""){
 			$this->model_admin->actualizarUsuario($datos);
-			$this->model_admin->upd_estado($disponibilidad['disponbilidad_id']);
-			redirect(base_url()."index.php/Admin/usuario");
+			$this->model_admin->updDisponibilidad($datos);
+			redirect(base_url()."index.php/Admin/");
 		}
 		else{
 			$this->model_admin->actualizarUsuario($datos);
 		
-			redirect(base_url()."index.php/Admin/usuario");
+			redirect(base_url()."index.php/Admin/");
 		}
 	}
 

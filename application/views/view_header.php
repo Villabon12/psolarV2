@@ -79,7 +79,7 @@
                   </div>
                 </div>
                 <div class="ant-modal-body">
-                  <form class="ant-form ant-form-horizontal Czk1txKg" method="POST" action="<?=base_url()?>index.php/Inicio/insertar_estimado">
+                  <form id="form-estimado" class="ant-form ant-form-horizontal Czk1txKg" role="form" method="POST" action="<?=base_url()?>index.php/Inicio/insertar_estimado">
                     <span class="ULaXP8pY">Escribir Codigo PAIS</span>
                     <div class="ant-row ant-form-item">
                       <div class="ant-col ant-form-item-control">
@@ -140,7 +140,7 @@
                     <div class="WsMtvfgp"><span class="_rQ8jXtd">1</span></div>
                     <div class="ant-row pzH0oHdB"><span class="rWZYvJke">Subir archivos</span></div>
                       <div class="quantity">
-                        <input type="number" step="1" placeholder="0" name="v_luz">
+                        <input type="file" name="v_luz">
                       </div></br>
                       <div class="rWZYvJke">por mes</div>
                       
@@ -305,7 +305,25 @@
       </div>
       
       
-        
+  <script>
+    $("#form-estimado").submit(function(event){
+      event.preventDefault();
+      var formData = new formData($('#form-estimado')[0]);
+      $.ajax({
+        url:$("form").attr("action"),
+        type:$("form").attr("method"),
+        data:formData,
+        cache:false,
+        contentType:false,
+        processData:false,
+
+        success:function(respuesta){
+          alert(respuesta);
+          
+        }
+      })
+    });
+  </script>
         
   <script src="<?=base_url()?>js/jquery-3.6.0.min.js"></script>
   <script src="<?=base_url()?>js/ar.js"></script>

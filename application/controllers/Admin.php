@@ -330,12 +330,12 @@ class Admin extends CI_Controller {
 		if($datos['disponibilidad_id'] != ""){
 			$this->model_admin->actualizarUsuario($datos);
 			$this->model_admin->updDisponibilidad($datos);
-			redirect(base_url()."index.php/Admin/");
+			redirect(base_url()."index.php/Admin");
 		}
 		else{
 			$this->model_admin->actualizarUsuario($datos);
 		
-			redirect(base_url()."index.php/Admin/");
+			redirect(base_url()."index.php/Admin");
 		}
 	}
 

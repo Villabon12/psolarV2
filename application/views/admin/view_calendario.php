@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="<?=base_url()?>assets/js/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
 
 </head>
     <body>
@@ -28,9 +28,9 @@
             events:"<?php echo base_url()?>index.php/Admin/load",
             selectable:true,
             selectHelper:true,
-             dayClick:function(date,jsEvent,view){
-                myModal.show();
-             },
+            //  dayClick:function(date,jsEvent,view){
+            //     myModal.show();
+            //  },
              select:function(start, end, allDay)
              {
                 
